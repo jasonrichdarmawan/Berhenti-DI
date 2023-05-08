@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct Berhenti_Di_App: App {
-    let persistenceController = PersistenceController.shared
-
+    let viewContext = PersistenceController.SHARED.Container_.viewContext
+    let reminderViewModel = ReminderViewModel(viewContext: PersistenceController.SHARED.Container_.viewContext)
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, viewContext)
+                .environmentObject(reminderViewModel)
         }
     }
 }

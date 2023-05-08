@@ -11,11 +11,17 @@
 		96327E262A0948C7004D3C65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E252A0948C7004D3C65 /* ContentView.swift */; };
 		96327E282A0948C9004D3C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96327E272A0948C9004D3C65 /* Assets.xcassets */; };
 		96327E2B2A0948C9004D3C65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96327E2A2A0948C9004D3C65 /* Preview Assets.xcassets */; };
-		96327E2D2A0948C9004D3C65 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E2C2A0948C9004D3C65 /* Persistence.swift */; };
+		96327E2D2A0948C9004D3C65 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E2C2A0948C9004D3C65 /* PersistenceController.swift */; };
 		96327E302A0948C9004D3C65 /* Berhenti_Di_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96327E2E2A0948C9004D3C65 /* Berhenti_Di_.xcdatamodeld */; };
 		96327E3B2A0948C9004D3C65 /* Berhenti_Di_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E3A2A0948C9004D3C65 /* Berhenti_Di_Tests.swift */; };
 		96327E452A0948C9004D3C65 /* Berhenti_Di_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E442A0948C9004D3C65 /* Berhenti_Di_UITests.swift */; };
 		96327E472A0948C9004D3C65 /* Berhenti_Di_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E462A0948C9004D3C65 /* Berhenti_Di_UITestsLaunchTests.swift */; };
+		96327E542A0951BC004D3C65 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E532A0951BC004D3C65 /* ReminderViewModel.swift */; };
+		96327E562A097892004D3C65 /* PersistenceController+PREVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E552A097892004D3C65 /* PersistenceController+PREVIEW.swift */; };
+		96327E582A09793B004D3C65 /* PersistenceController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E572A09793B004D3C65 /* PersistenceController+Helper.swift */; };
+		96327E5C2A097CC7004D3C65 /* ReminderViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E5B2A097CC7004D3C65 /* ReminderViewModelProtocol.swift */; };
+		96A2E8902A0983E30072CD7E /* Reminder+ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2E88F2A0983E30072CD7E /* Reminder+ReminderItem.swift */; };
+		96A2E8922A0984570072CD7E /* ReminderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2E8912A0984570072CD7E /* ReminderProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +47,7 @@
 		96327E252A0948C7004D3C65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		96327E272A0948C9004D3C65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96327E2A2A0948C9004D3C65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		96327E2C2A0948C9004D3C65 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		96327E2C2A0948C9004D3C65 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		96327E2F2A0948C9004D3C65 /* Berhenti_Di_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Berhenti_Di_.xcdatamodel; sourceTree = "<group>"; };
 		96327E312A0948C9004D3C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96327E362A0948C9004D3C65 /* Berhenti Di?Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Berhenti Di?Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +55,12 @@
 		96327E402A0948C9004D3C65 /* Berhenti Di?UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Berhenti Di?UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96327E442A0948C9004D3C65 /* Berhenti_Di_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Berhenti_Di_UITests.swift; sourceTree = "<group>"; };
 		96327E462A0948C9004D3C65 /* Berhenti_Di_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Berhenti_Di_UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		96327E532A0951BC004D3C65 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
+		96327E552A097892004D3C65 /* PersistenceController+PREVIEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+PREVIEW.swift"; sourceTree = "<group>"; };
+		96327E572A09793B004D3C65 /* PersistenceController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+Helper.swift"; sourceTree = "<group>"; };
+		96327E5B2A097CC7004D3C65 /* ReminderViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModelProtocol.swift; sourceTree = "<group>"; };
+		96A2E88F2A0983E30072CD7E /* Reminder+ReminderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+ReminderItem.swift"; sourceTree = "<group>"; };
+		96A2E8912A0984570072CD7E /* ReminderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +111,12 @@
 		96327E222A0948C7004D3C65 /* Berhenti Di? */ = {
 			isa = PBXGroup;
 			children = (
+				96327E5A2A097A56004D3C65 /* CoreData */,
+				96327E592A097A27004D3C65 /* ViewModels */,
 				96327E232A0948C7004D3C65 /* Berhenti_Di_App.swift */,
 				96327E252A0948C7004D3C65 /* ContentView.swift */,
 				96327E272A0948C9004D3C65 /* Assets.xcassets */,
-				96327E2C2A0948C9004D3C65 /* Persistence.swift */,
 				96327E312A0948C9004D3C65 /* Info.plist */,
-				96327E2E2A0948C9004D3C65 /* Berhenti_Di_.xcdatamodeld */,
 				96327E292A0948C9004D3C65 /* Preview Content */,
 			);
 			path = "Berhenti Di?";
@@ -133,6 +145,44 @@
 				96327E462A0948C9004D3C65 /* Berhenti_Di_UITestsLaunchTests.swift */,
 			);
 			path = "Berhenti Di?UITests";
+			sourceTree = "<group>";
+		};
+		96327E592A097A27004D3C65 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				96A2E88D2A097EED0072CD7E /* Reminder */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		96327E5A2A097A56004D3C65 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				96A2E88E2A0983B80072CD7E /* Models */,
+				96327E2E2A0948C9004D3C65 /* Berhenti_Di_.xcdatamodeld */,
+				96327E2C2A0948C9004D3C65 /* PersistenceController.swift */,
+				96327E552A097892004D3C65 /* PersistenceController+PREVIEW.swift */,
+				96327E572A09793B004D3C65 /* PersistenceController+Helper.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		96A2E88D2A097EED0072CD7E /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				96327E532A0951BC004D3C65 /* ReminderViewModel.swift */,
+				96327E5B2A097CC7004D3C65 /* ReminderViewModelProtocol.swift */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
+		96A2E88E2A0983B80072CD7E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96A2E88F2A0983E30072CD7E /* Reminder+ReminderItem.swift */,
+				96A2E8912A0984570072CD7E /* ReminderProtocol.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +315,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96327E2D2A0948C9004D3C65 /* Persistence.swift in Sources */,
+				96327E582A09793B004D3C65 /* PersistenceController+Helper.swift in Sources */,
+				96A2E8922A0984570072CD7E /* ReminderProtocol.swift in Sources */,
+				96A2E8902A0983E30072CD7E /* Reminder+ReminderItem.swift in Sources */,
+				96327E542A0951BC004D3C65 /* ReminderViewModel.swift in Sources */,
+				96327E2D2A0948C9004D3C65 /* PersistenceController.swift in Sources */,
 				96327E302A0948C9004D3C65 /* Berhenti_Di_.xcdatamodeld in Sources */,
 				96327E262A0948C7004D3C65 /* ContentView.swift in Sources */,
+				96327E5C2A097CC7004D3C65 /* ReminderViewModelProtocol.swift in Sources */,
+				96327E562A097892004D3C65 /* PersistenceController+PREVIEW.swift in Sources */,
 				96327E242A0948C7004D3C65 /* Berhenti_Di_App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

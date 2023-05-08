@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="firstItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReminderItem" inverseName="reminder" inverseEntity="ReminderItem"/>
+        <relationship name="nextReminder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reminder" inverseName="nextReminder" inverseEntity="Reminder"/>
+    </entity>
+    <entity name="ReminderItem" representedClassName="ReminderItem" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="nextItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReminderItem" inverseName="nextItem" inverseEntity="ReminderItem"/>
+        <relationship name="reminder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reminder" inverseName="firstItem" inverseEntity="Reminder"/>
+    </entity>
+</model>
