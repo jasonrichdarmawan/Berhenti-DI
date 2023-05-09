@@ -150,6 +150,7 @@
 		96327E592A097A27004D3C65 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				96AA340E2A0A574000567074 /* ReminderItem */,
 				96A2E88D2A097EED0072CD7E /* Reminder */,
 			);
 			path = ViewModels;
@@ -183,6 +184,13 @@
 				96A2E8912A0984570072CD7E /* ReminderProtocol.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		96AA340E2A0A574000567074 /* ReminderItem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReminderItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

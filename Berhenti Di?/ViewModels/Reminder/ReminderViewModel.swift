@@ -43,22 +43,29 @@ class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerD
         return reminder.index
     }()
     
-    @Published var Reminders_: [Reminder] = []
-    @Published var ReminderLastIndex_: Int16 = 0
+    @Published private var reminders_: [Reminder] = []
+    var Reminders_: [Reminder] {
+        return self.reminders_
+    }
+    
+    @Published private var reminderLastIndex_: Int16 = 0
+    var ReminderLastIndex_: Int16 {
+        return self.reminderLastIndex_
+    }
     
     init(viewContext: NSManagedObjectContext) {
         self.viewContext_ = viewContext
         
         super.init()
         
-        self.Reminders_ = self.fetchedResultsController.fetchedObjects ?? []
-        self.ReminderLastIndex_ = self.lazyReminderLastIndex_
+        self.reminders_ = self.fetchedResultsController.fetchedObjects ?? []
+        self.reminderLastIndex_ = self.lazyReminderLastIndex_
         
         print("\(String(describing: ReminderViewModel.self)) rendered")
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.Reminders_ = controller.fetchedObjects as? [Reminder] ?? []
+        self.reminders_ = controller.fetchedObjects as? [Reminder] ?? []
     }
     
     func AddReminder(name: String, index: Int16) -> Reminder {

@@ -9,6 +9,9 @@ import Foundation
 import CoreData
 
 protocol ReminderViewModelProtocol {
+    var Reminders_: [Reminder] { get }
+    var ReminderLastIndex_: Int16 { get }
+    
     /**
      Expectation: View call PersistenceController.Save(viewContext: viewContext) to save.
      */
