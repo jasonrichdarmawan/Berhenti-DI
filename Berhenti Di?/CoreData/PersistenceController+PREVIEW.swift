@@ -12,15 +12,18 @@ extension PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.Container_.viewContext
         
-        let reminder1 = Reminder.CreateReminder(viewContext: viewContext, name: "reminder1", index: 1)
-        let reminder0 = Reminder.CreateReminder(viewContext: viewContext, name: "reminder0", index: 0)
+        let reminderViewModel = ReminderViewModel(viewContext: viewContext)
+        let reminder1 = reminderViewModel.AddReminder(name: "reminder1", index: 1)
+        let reminder0 = reminderViewModel.AddReminder(name: "reminder0", index: 0)
         
-        let _ = reminder0.CreateReminderItem(name: "reminderItem0", index: 0)
-        let _ = reminder0.CreateReminderItem(name: "reminderItem1", index: 1)
-        let _ = reminder0.CreateReminderItem(name: "reminderItem2", index: 2)
-        let _ = reminder0.CreateReminderItem(name: "reminderItem3", index: 3)
+        PersistenceController.Save(viewContext: viewContext, fatal: true)
         
-        let _ = reminder1.CreateReminderItem(name: "reminderItem0", index: 0)
+        let _ = reminder0.CreateReminderItem(name: "reminderItem0", index: 0, checked: false)
+        let _ = reminder0.CreateReminderItem(name: "reminderItem1", index: 1, checked: false)
+        let _ = reminder0.CreateReminderItem(name: "reminderItem2", index: 2, checked: false)
+        let _ = reminder0.CreateReminderItem(name: "reminderItem3", index: 3, checked: false)
+        
+        let _ = reminder1.CreateReminderItem(name: "reminderItem0", index: 0, checked: false)
         
         PersistenceController.Save(viewContext: viewContext, fatal: true)
         return result

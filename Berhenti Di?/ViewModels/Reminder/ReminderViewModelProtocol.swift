@@ -9,6 +9,13 @@ import Foundation
 import CoreData
 
 protocol ReminderViewModelProtocol {
-    func AddReminder(name: String) -> Reminder
+    /**
+     Expectation: View call PersistenceController.Save(viewContext: viewContext) to save.
+     */
+    func AddReminder(name: String, index: Int16) -> Reminder
+    
+    /**
+     Expectation: View call PersistenceController.Save(viewContext: viewContext) to save.
+     */
     func DeleteReminder(offsets: IndexSet) -> Bool
 }

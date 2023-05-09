@@ -21,9 +21,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(0..<self.reminderViewModel_.Reminders_.count, id: \.self) { index in
+                ForEach(self.reminderViewModel_.Reminders_, id: \.self) { reminder in
+//                ForEach(0..<self.reminderViewModel_.Reminders_, id: \.self) { index in
                     NavigationLink {
-                        if let reminderItems = self.reminderViewModel_.Reminders_[index].GetReminderItems() {
+                        if let reminderItems = reminder.GetReminderItems() {
+//                        if let reminderItems = self.reminderViewModel_.Reminders_[index].GetReminderItems() {
                             ForEach(reminderItems, id: \.self) {
                                 reminderItem in
                                 if let name = reminderItem.name {
@@ -32,7 +34,8 @@ struct ContentView: View {
                             }
                         }
                     } label: {
-                        if let name = self.reminderViewModel_.Reminders_[index].name {
+                        if let name = reminder.name {
+//                        if let name = self.reminderViewModel_.Reminders_[index].name {
                             Text("\(name)")
                         }
                     }
@@ -41,6 +44,7 @@ struct ContentView: View {
                     offsets in
                     withAnimation {
                         let _ = self.reminderViewModel_.DeleteReminder(offsets: offsets)
+                        PersistenceController.Save(viewContext: self.viewContext_)
                     }
                 })
             }
@@ -51,7 +55,8 @@ struct ContentView: View {
                 ToolbarItem {
                     Button(action: {
                         withAnimation {
-                            let _ = self.reminderViewModel_.AddReminder(name: "reminder")
+                            let _ = self.reminderViewModel_.AddReminder(name: "reminder", index: self.reminderViewModel_.ReminderLastIndex_)
+                            PersistenceController.Save(viewContext: self.viewContext_)
                         }
                     }) {
                         Label("Add Item", systemImage: "plus")

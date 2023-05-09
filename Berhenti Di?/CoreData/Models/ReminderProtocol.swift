@@ -18,7 +18,7 @@ protocol ReminderProtocol {
      Expectation:
      This method is executed in a View that have a Reminder entity.
      */
-    func CreateReminderItem(name: String, index: Int16) -> ReminderItem?
+    func CreateReminderItem(name: String, index: Int16, checked: Bool) -> ReminderItem?
     
     /**
      Behavior:

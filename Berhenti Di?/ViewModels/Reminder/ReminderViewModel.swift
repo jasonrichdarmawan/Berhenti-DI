@@ -36,14 +36,23 @@ class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerD
         return controller
     }()
     
+    private lazy var lazyReminderLastIndex_: Int16 = {
+        guard let reminder = self.Reminders_.max(by: { $0.index > $1.index })
+        else { return 0 }
+        
+        return reminder.index
+    }()
+    
     @Published var Reminders_: [Reminder] = []
+    @Published var ReminderLastIndex_: Int16 = 0
     
     init(viewContext: NSManagedObjectContext) {
         self.viewContext_ = viewContext
         
         super.init()
         
-        self.Reminders_ = fetchedResultsController.fetchedObjects ?? []
+        self.Reminders_ = self.fetchedResultsController.fetchedObjects ?? []
+        self.ReminderLastIndex_ = self.lazyReminderLastIndex_
         
         print("\(String(describing: ReminderViewModel.self)) rendered")
     }
@@ -52,19 +61,14 @@ class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerD
         self.Reminders_ = controller.fetchedObjects as? [Reminder] ?? []
     }
     
-    func AddReminder(name: String) -> Reminder {
-        let reminder = Reminder(context: self.viewContext_)
-        reminder.name = "reminder"
-        
-        PersistenceController.Save(viewContext: self.viewContext_)
+    func AddReminder(name: String, index: Int16) -> Reminder {
+        let reminder = Reminder.CreateReminder(viewContext: self.viewContext_, name: name, index: index)
         
         return reminder
     }
     
     func DeleteReminder(offsets: IndexSet) -> Bool {
         offsets.map { self.Reminders_[$0] }.forEach(self.viewContext_.delete)
-        
-        PersistenceController.Save(viewContext: self.viewContext_)
         
         return true
     }

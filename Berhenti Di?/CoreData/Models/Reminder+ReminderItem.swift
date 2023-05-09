@@ -16,13 +16,14 @@ extension Reminder: ReminderProtocol {
         return reminder
     }
     
-    func CreateReminderItem(name: String, index: Int16) -> ReminderItem? {
+    func CreateReminderItem(name: String, index: Int16, checked: Bool) -> ReminderItem? {
         var reminderItem: ReminderItem?
         
         if let viewContext = self.managedObjectContext {
             reminderItem = ReminderItem(context: viewContext)
             reminderItem?.index = index
             reminderItem?.name = name
+            reminderItem?.checked = checked
             reminderItem?.reminder = self
         }
         
