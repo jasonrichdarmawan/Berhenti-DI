@@ -22,20 +22,8 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(self.reminderViewModel_.Reminders_, id: \.self) { reminder in
-//                ForEach(0..<self.reminderViewModel_.Reminders_, id: \.self) { index in
-                    NavigationLink {
-                        if let reminderItems = reminder.GetReminderItems() {
-//                        if let reminderItems = self.reminderViewModel_.Reminders_[index].GetReminderItems() {
-                            ForEach(reminderItems, id: \.self) {
-                                reminderItem in
-                                if let name = reminderItem.name {
-                                    Text("\(name)")
-                                }
-                            }
-                        }
-                    } label: {
+                    NavigationLink(destination: RenderItemView(viewContext: self.viewContext_, reminder: reminder)) {
                         if let name = reminder.name {
-//                        if let name = self.reminderViewModel_.Reminders_[index].name {
                             Text("\(name)")
                         }
                     }

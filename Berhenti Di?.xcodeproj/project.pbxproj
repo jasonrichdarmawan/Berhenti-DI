@@ -22,6 +22,9 @@
 		96327E5C2A097CC7004D3C65 /* ReminderViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96327E5B2A097CC7004D3C65 /* ReminderViewModelProtocol.swift */; };
 		96A2E8902A0983E30072CD7E /* Reminder+ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2E88F2A0983E30072CD7E /* Reminder+ReminderItem.swift */; };
 		96A2E8922A0984570072CD7E /* ReminderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2E8912A0984570072CD7E /* ReminderProtocol.swift */; };
+		96AA34122A0A5AD500567074 /* ReminderItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA34112A0A5AD500567074 /* ReminderItemViewModel.swift */; };
+		96AA34142A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA34132A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift */; };
+		96AA34172A0A61FD00567074 /* RenderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA34162A0A61FD00567074 /* RenderItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		96327E5B2A097CC7004D3C65 /* ReminderViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModelProtocol.swift; sourceTree = "<group>"; };
 		96A2E88F2A0983E30072CD7E /* Reminder+ReminderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+ReminderItem.swift"; sourceTree = "<group>"; };
 		96A2E8912A0984570072CD7E /* ReminderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderProtocol.swift; sourceTree = "<group>"; };
+		96AA34112A0A5AD500567074 /* ReminderItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemViewModel.swift; sourceTree = "<group>"; };
+		96AA34132A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemViewModelProtocol.swift; sourceTree = "<group>"; };
+		96AA34162A0A61FD00567074 /* RenderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		96327E222A0948C7004D3C65 /* Berhenti Di? */ = {
 			isa = PBXGroup;
 			children = (
+				96AA34152A0A61F500567074 /* Views */,
 				96327E5A2A097A56004D3C65 /* CoreData */,
 				96327E592A097A27004D3C65 /* ViewModels */,
 				96327E232A0948C7004D3C65 /* Berhenti_Di_App.swift */,
@@ -189,8 +196,18 @@
 		96AA340E2A0A574000567074 /* ReminderItem */ = {
 			isa = PBXGroup;
 			children = (
+				96AA34112A0A5AD500567074 /* ReminderItemViewModel.swift */,
+				96AA34132A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift */,
 			);
 			path = ReminderItem;
+			sourceTree = "<group>";
+		};
+		96AA34152A0A61F500567074 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96AA34162A0A61FD00567074 /* RenderItemView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,11 +341,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				96327E582A09793B004D3C65 /* PersistenceController+Helper.swift in Sources */,
+				96AA34142A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift in Sources */,
+				96AA34172A0A61FD00567074 /* RenderItemView.swift in Sources */,
 				96A2E8922A0984570072CD7E /* ReminderProtocol.swift in Sources */,
 				96A2E8902A0983E30072CD7E /* Reminder+ReminderItem.swift in Sources */,
 				96327E542A0951BC004D3C65 /* ReminderViewModel.swift in Sources */,
 				96327E2D2A0948C9004D3C65 /* PersistenceController.swift in Sources */,
 				96327E302A0948C9004D3C65 /* Berhenti_Di_.xcdatamodeld in Sources */,
+				96AA34122A0A5AD500567074 /* ReminderItemViewModel.swift in Sources */,
 				96327E262A0948C7004D3C65 /* ContentView.swift in Sources */,
 				96327E5C2A097CC7004D3C65 /* ReminderViewModelProtocol.swift in Sources */,
 				96327E562A097892004D3C65 /* PersistenceController+PREVIEW.swift in Sources */,

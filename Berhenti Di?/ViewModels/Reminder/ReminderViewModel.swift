@@ -37,7 +37,7 @@ class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerD
     }()
     
     private lazy var lazyReminderLastIndex_: Int16 = {
-        guard let reminder = self.Reminders_.max(by: { $0.index > $1.index })
+        guard let reminder = self.reminders_.max(by: { $0.index > $1.index })
         else { return 0 }
         
         return reminder.index
