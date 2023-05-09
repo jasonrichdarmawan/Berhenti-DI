@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ReminderProtocol {
-    func CreateReminderItem(name: String) -> ReminderItem?
+    func GetReminderItems() -> [ReminderItem]?
 }

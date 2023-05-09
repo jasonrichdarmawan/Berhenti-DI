@@ -17,7 +17,7 @@ class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerD
         // lazy fetching
         fetchRequest.relationshipKeyPathsForPrefetching = []
         
-        fetchRequest.sortDescriptors = []
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: self.viewContext_,

@@ -23,13 +23,15 @@ struct ContentView: View {
             List {
                 ForEach(0..<self.reminderViewModel_.Reminders_.count, id: \.self) { index in
                     NavigationLink {
-                        if let firstItem = self.reminderViewModel_.Reminders_[index].firstItem,
-                           let nextItem = firstItem.nextItem, let name = nextItem.name {
-                            Text("\(name)")
+                        if let reminderItems = self.reminderViewModel_.Reminders_[index].GetReminderItems() {
+                            ForEach(reminderItems, id: \.self) {
+                                reminderItem in
+                                if let name = reminderItem.name {
+                                    Text("\(name)")
+                                }
+                            }
                         }
-                        
                     } label: {
-                        
                         if let name = self.reminderViewModel_.Reminders_[index].name {
                             Text("\(name)")
                         }
