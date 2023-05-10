@@ -11,13 +11,13 @@ import CoreData
 class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate, ReminderViewModelProtocol {
     private let viewContext_: NSManagedObjectContext
     
-    private lazy var fetchedResultsController: NSFetchedResultsController<Reminder> = {
+    private lazy var lazyFetchedResultsController: NSFetchedResultsController<Reminder> = {
         let fetchRequest = Reminder.fetchRequest()
         
         // lazy fetching
         fetchRequest.relationshipKeyPathsForPrefetching = []
         
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: false)]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: self.viewContext_,
@@ -35,22 +35,14 @@ class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerD
         
         return controller
     }()
-    
-    private lazy var lazyReminderLastIndex_: Int16 = {
-        guard let reminder = self.reminders_.max(by: { $0.index > $1.index })
-        else { return 0 }
+    @Published var reminders_: [Reminder] = []
+    var Reminders_: [Reminder] { return self.reminders_ }
+
+    var ReminderLastIndex_: Int16 {
+        guard let reminder = self.Reminders_.max(by: { $0.index < $1.index })
+        else { return -1 }
         
         return reminder.index
-    }()
-    
-    @Published private var reminders_: [Reminder] = []
-    var Reminders_: [Reminder] {
-        return self.reminders_
-    }
-    
-    @Published private var reminderLastIndex_: Int16 = 0
-    var ReminderLastIndex_: Int16 {
-        return self.reminderLastIndex_
     }
     
     init(viewContext: NSManagedObjectContext) {
@@ -58,24 +50,32 @@ class ReminderViewModel: NSObject, ObservableObject, NSFetchedResultsControllerD
         
         super.init()
         
-        self.reminders_ = self.fetchedResultsController.fetchedObjects ?? []
-        self.reminderLastIndex_ = self.lazyReminderLastIndex_
+        self.reminders_ = self.lazyFetchedResultsController.fetchedObjects ?? []
         
-        print("\(String(describing: ReminderViewModel.self)) rendered")
+        #if DEBUG
+            print("\(String(describing: ReminderViewModel.self)) initialized")
+        #endif
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        #if DEBUG
+            print("\(String(describing: ReminderViewModel.self)) \(#function) called")
+        #endif
         self.reminders_ = controller.fetchedObjects as? [Reminder] ?? []
     }
     
-    func AddReminder(name: String, index: Int16) -> Reminder {
+    func CreateReminder(name: String, index: Int16) -> Reminder {
         let reminder = Reminder.CreateReminder(viewContext: self.viewContext_, name: name, index: index)
+        
+        PersistenceController.Save(viewContext: self.viewContext_)
         
         return reminder
     }
     
     func DeleteReminder(offsets: IndexSet) -> Bool {
         offsets.map { self.Reminders_[$0] }.forEach(self.viewContext_.delete)
+        
+        PersistenceController.Save(viewContext: self.viewContext_)
         
         return true
     }

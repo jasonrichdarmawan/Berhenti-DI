@@ -13,8 +13,8 @@ extension PersistenceController {
         let viewContext = result.Container_.viewContext
         
         let reminderViewModel = ReminderViewModel(viewContext: viewContext)
-        let reminder1 = reminderViewModel.AddReminder(name: "reminder1", index: 1)
-        let reminder0 = reminderViewModel.AddReminder(name: "reminder0", index: 0)
+        let reminder1 = reminderViewModel.CreateReminder(name: "reminder1", index: 1)
+        let reminder0 = reminderViewModel.CreateReminder(name: "reminder0", index: 0)
         
         PersistenceController.Save(viewContext: viewContext, fatal: true)
         

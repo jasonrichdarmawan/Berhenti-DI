@@ -14,7 +14,9 @@ struct ContentView: View {
     @EnvironmentObject private var reminderViewModel_: ReminderViewModel
     
     init() {
-        print("\(String(describing: ContentView.self)) rendered")
+        #if DEBUG
+            print("\(String(describing: ContentView.self)) initialized")
+        #endif
     }
     
     // TODO: SOLID Design Principles
@@ -22,35 +24,49 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(self.reminderViewModel_.Reminders_, id: \.self) { reminder in
-                    NavigationLink(destination: RenderItemView(viewContext: self.viewContext_, reminder: reminder)) {
-                        if let name = reminder.name {
-                            Text("\(name)")
+                    NavigationLink {
+                        LazyView {
+                            RenderItemView(reminderItemViewModel: ReminderItemViewModel(viewContext: self.viewContext_, reminder: reminder))
                         }
+                    } label: {
+                        // TODO: placeholder `Nama rute?`
+                        Text("\(reminder.index) \(reminder.name ?? "Nama rute?")")
                     }
                 }
-                .onDelete(perform: {
-                    offsets in
-                    withAnimation {
-                        let _ = self.reminderViewModel_.DeleteReminder(offsets: offsets)
-                        PersistenceController.Save(viewContext: self.viewContext_)
-                    }
-                })
+                .onDelete(perform: self.deleteReminder)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: {
-                        withAnimation {
-                            let _ = self.reminderViewModel_.AddReminder(name: "reminder", index: self.reminderViewModel_.ReminderLastIndex_)
-                            PersistenceController.Save(viewContext: self.viewContext_)
-                        }
-                    }) {
+                    Button(action: self.createReminder) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
             }
+        }
+        .onAppear {
+            #if DEBUG
+                print("\(String(describing: ContentView.self)) appeared")
+            #endif
+        }
+        .onDisappear {
+            #if DEBUG
+                print("\(String(describing: ContentView.self)) disappeared")
+            #endif
+        }
+    }
+    
+    private func createReminder() {
+        withAnimation {
+            let _ = self.reminderViewModel_.CreateReminder(name: "reminder", index: self.reminderViewModel_.ReminderLastIndex_ + 1)
+        }
+    }
+    
+    private func deleteReminder(offsets: IndexSet) {
+        withAnimation {
+            let _ = self.reminderViewModel_.DeleteReminder(offsets: offsets)
         }
     }
 }

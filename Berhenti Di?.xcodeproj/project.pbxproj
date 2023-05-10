@@ -25,6 +25,7 @@
 		96AA34122A0A5AD500567074 /* ReminderItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA34112A0A5AD500567074 /* ReminderItemViewModel.swift */; };
 		96AA34142A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA34132A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift */; };
 		96AA34172A0A61FD00567074 /* RenderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA34162A0A61FD00567074 /* RenderItemView.swift */; };
+		96AA341B2A0A91B900567074 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA341A2A0A91B900567074 /* LazyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		96AA34112A0A5AD500567074 /* ReminderItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemViewModel.swift; sourceTree = "<group>"; };
 		96AA34132A0A5AFB00567074 /* ReminderItemViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemViewModelProtocol.swift; sourceTree = "<group>"; };
 		96AA34162A0A61FD00567074 /* RenderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderItemView.swift; sourceTree = "<group>"; };
+		96AA341A2A0A91B900567074 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		96327E222A0948C7004D3C65 /* Berhenti Di? */ = {
 			isa = PBXGroup;
 			children = (
+				96AA34182A0A91A300567074 /* Core */,
 				96AA34152A0A61F500567074 /* Views */,
 				96327E5A2A097A56004D3C65 /* CoreData */,
 				96327E592A097A27004D3C65 /* ViewModels */,
@@ -206,6 +209,22 @@
 			isa = PBXGroup;
 			children = (
 				96AA34162A0A61FD00567074 /* RenderItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96AA34182A0A91A300567074 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				96AA341C2A0A928A00567074 /* Views */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		96AA341C2A0A928A00567074 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96AA341A2A0A91B900567074 /* LazyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +365,7 @@
 				96A2E8922A0984570072CD7E /* ReminderProtocol.swift in Sources */,
 				96A2E8902A0983E30072CD7E /* Reminder+ReminderItem.swift in Sources */,
 				96327E542A0951BC004D3C65 /* ReminderViewModel.swift in Sources */,
+				96AA341B2A0A91B900567074 /* LazyView.swift in Sources */,
 				96327E2D2A0948C9004D3C65 /* PersistenceController.swift in Sources */,
 				96327E302A0948C9004D3C65 /* Berhenti_Di_.xcdatamodeld in Sources */,
 				96AA34122A0A5AD500567074 /* ReminderItemViewModel.swift in Sources */,

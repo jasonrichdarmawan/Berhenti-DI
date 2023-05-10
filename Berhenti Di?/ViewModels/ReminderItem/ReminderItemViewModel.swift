@@ -12,9 +12,7 @@ class ReminderItemViewModel: NSObject, ObservableObject, NSFetchedResultsControl
     private let viewContext_: NSManagedObjectContext
     
     @Published private var reminder_: Reminder
-    var Reminder_: Reminder {
-        return reminder_
-    }
+    var Reminder_: Reminder { return self.reminder_ }
     
     private lazy var fetchedResultsController: NSFetchedResultsController<ReminderItem> = {
         let fetchRequest = ReminderItem.fetchRequest()
@@ -42,21 +40,14 @@ class ReminderItemViewModel: NSObject, ObservableObject, NSFetchedResultsControl
         return controller
     }()
     
-    private lazy var lazyReminderItemLastIndex_: Int16 = {
-        guard let reminder = self.reminderItems_.max(by: { $0.index > $1.index })
-        else { return 0 }
+    @Published private var reminderItems_: [ReminderItem] = []
+    var ReminderItems_: [ReminderItem] { return self.reminderItems_ }
+    
+    var ReminderItemLastIndex_: Int16 {
+        guard let reminder = self.ReminderItems_.max(by: { $0.index < $1.index })
+        else { return -1 }
         
         return reminder.index
-    }()
-    
-    @Published private var reminderItems_: [ReminderItem] = []
-    var ReminderItems_: [ReminderItem] {
-        return self.reminderItems_
-    }
-    
-    @Published private var reminderItemLastIndex_: Int16 = 0
-    var ReminderItemLastIndex_: Int16 {
-        return self.reminderItemLastIndex_
     }
     
     init(viewContext: NSManagedObjectContext, reminder: Reminder) {
@@ -66,8 +57,16 @@ class ReminderItemViewModel: NSObject, ObservableObject, NSFetchedResultsControl
         super.init()
         
         self.reminderItems_ = self.fetchedResultsController.fetchedObjects ?? []
-        self.reminderItemLastIndex_ = self.lazyReminderItemLastIndex_
         
-        print("\(String(describing: ReminderItemViewModel.self)) rendered")
+        #if DEBUG
+            print("\(String(describing: ReminderItemViewModel.self)) initialized")
+        #endif
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        #if DEBUG
+            print("\(String(describing: ReminderItemViewModel.self)) \(#function) called")
+        #endif
+        self.reminderItems_ = controller.fetchedObjects as? [ReminderItem] ?? []
     }
 }
